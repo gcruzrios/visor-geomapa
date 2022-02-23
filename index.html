@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Visor SINIA</title>
+    <title>Visor Geomapa:: GEOINN Ti</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,10 +79,11 @@
         });
 
         //var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
-        var defaultBase = L.tileLayer.provider('OpenStreetMap').addTo(map);
+        var defaultBase = L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
 
         var baseLayers = {
-            'OSM': defaultBase,
+            'HOT': defaultBase,
+            'OSM': L.tileLayer.provider('OpenStreetMap'),
             'HOT':L.tileLayer.provider('OpenStreetMap.HOT'),
             'USGS TNM': L.tileLayer.provider('USGSTNM'),
             'ESRI Imagery': L.tileLayer.provider('Esri.WorldImagery'),
@@ -114,17 +115,27 @@
         var ProvinciasLayer = source.getLayer('costarica-geoinn:Provincias_de_Costa_Rica');
         var BelenLayer = source.getLayer('costarica-geoinn:Belen_3D_CRTm05');
 
+        var source = L.WMS.source('https://geomapa.tk/geoserver/costarica-mep/wms?', options);
+        var CEPrivados = source.getLayer('costarica-mep:MEP-CEPrivados');
+        var CEPublicos = source.getLayer('costarica-mep:MEP-CEPublicos');
+
+
         //Load OSM Buildings then disable it on first load; can only be viewed at certain scales
         var osmb = new OSMBuildings(map).load();
         map.removeLayer(osmb);
 
         //Overlay grouped layers    
         var groupOverLays = {
-            "DTA": {
+            "Divisiones": {
                 "Provincias": ProvinciasLayer,
                 "Cantones": CantonesLayer,
                 "Distritos": DistritosLayer,
                 "Belen": BelenLayer,
+                
+            },
+            "MEP": {
+                "Centros Privados": CEPrivados,
+                "Centros Públicos": CEPublicos,
                 
             },
         };
