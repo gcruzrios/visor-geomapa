@@ -80,7 +80,7 @@
         }
 
         .logo-box {
-            padding: 5px;
+            padding: 8px;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -136,7 +136,7 @@
     <div class="navbar">
         <div class="logos">
             <div class="logo-box">
-                <img class="logo icon-geo" src="logos/geoinn-blanco-380.png" alt="icon"/>
+                <img class="logo icon-geo" src="logos/logo-geo.png" alt="icon"/>
                 <img class="logo icon-minae" src="logos/visor-carto.png" alt="icon"/>
                 <img class="logo icon-ceniga" src="logos/visor-demo.png" alt="icon"/>
             </div>
@@ -151,13 +151,14 @@
         });
 
         //var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
-        var defaultBase = L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
-
+        //var defaultBase = L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
+        var defaultBase = L.tileLayer.provider('Esri.WorldStreetMap').addTo(map);
         var baseLayers = {
             'HOT': defaultBase,
             'OSM': L.tileLayer.provider('OpenStreetMap'),
             'HOT':L.tileLayer.provider('OpenStreetMap.HOT'),
             'USGS TNM': L.tileLayer.provider('USGSTNM'),
+            'ESRI': L.tileLayer.provider('Esri.WorldStreetMap'),
             'ESRI Imagery': L.tileLayer.provider('Esri.WorldImagery'),
             'ESRI Ocean Basemap': L.tileLayer.provider('Esri.OceanBasemap'),
             'OSM Topo': L.tileLayer.provider('OpenTopoMap')
