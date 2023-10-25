@@ -180,17 +180,19 @@
             tiled: 'true'
             //info_format: 'text/html'
         };
+        var source = L.WMS.source('https://mapas.msj.go.cr/server/services/SIG_SNIT/SIG_SER_SNIT_WMS/MapServer/WMSServer', options);
+        var BloquesSJ = source.getLayer('Bloques_SJ');
 
         //Using a relative url to call layer instead of http
-        var source = L.WMS.source('https://geomapa.tk/geoserver/costarica-geoinn/wms?', options);
-        var CantonesLayer = source.getLayer('costarica-geoinn:Cantones_de_Costa_Rica');
-        var DistritosLayer = source.getLayer('costarica-geoinn:Distritos_de_Costa_Rica');
-        var ProvinciasLayer = source.getLayer('costarica-geoinn:Provincias_de_Costa_Rica');
-        var BelenLayer = source.getLayer('costarica-geoinn:Belen_3D_CRTm05');
+        var source = L.WMS.source('https://geos.snitcr.go.cr/be/IGN_PREVIEW/wms?', options);
+        var CantonesLayer = source.getLayer('IGN_PREVIEW:limitecantonal_5k__bW9kaWZpY2FjaW9uZHRhOjoxNTg4MjU1Nzg3');
+        //var DistritosLayer = source.getLayer('costarica-geoinn:Distritos_de_Costa_Rica');
+        var ProvinciasLayer = source.getLayer('IGN_PREVIEW:limitecantonal_5k__bW9kaWZpY2FjaW9uZHRhOjoxNTg4MjU1Nzg3');
+        
 
-        var source = L.WMS.source('https://geomapa.tk/geoserver/costarica-mep/wms?', options);
-        var CEPrivados = source.getLayer('costarica-mep:MEP-CEPrivados');
-        var CEPublicos = source.getLayer('costarica-mep:MEP-CEPublicos');
+        // var source = L.WMS.source('https://geomapa.tk/geoserver/costarica-mep/wms?', options);
+        // var CEPrivados = source.getLayer('costarica-mep:MEP-CEPrivados');
+        // var CEPublicos = source.getLayer('costarica-mep:MEP-CEPublicos');
 
 
         //Load OSM Buildings then disable it on first load; can only be viewed at certain scales
@@ -202,13 +204,13 @@
             "Divisiones": {
                 "Provincias": ProvinciasLayer,
                 "Cantones": CantonesLayer,
-                "Distritos": DistritosLayer,
-                "Belen": BelenLayer,
+                //"Distritos": DistritosLayer,
+                
                 
             },
-            "MEP": {
-                "Centros Privados": CEPrivados,
-                "Centros Públicos": CEPublicos,
+            "San Jose": {
+                "Bloques": BloquesSJ,
+                
                 
             },
         };
