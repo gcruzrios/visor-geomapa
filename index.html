@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Visor Geomapa:: GEOINN Ti</title>
+    <title>Visor Geomapa:: GEO TECNOLOGIAS</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,13 +165,13 @@
         };
 
 
-        //Using a relative url to call layer instead of http
-        var CantonesIndivLayer = L.tileLayer.wms('https://geomapa.tk/geoserver/costarica-geoinn/wms?', {
-            layers: 'Cantones_de_Costa_Rica',
-            format: 'image/png',
-            opacity: 0.5,
-            tiled: 'true'
-        });
+        // //Using a relative url to call layer instead of http
+        // var CantonesIndivLayer = L.tileLayer.wms('https://geomapa.tk/geoserver/costarica-geoinn/wms?', {
+        //     layers: 'Cantones_de_Costa_Rica',
+        //     format: 'image/png',
+        //     opacity: 0.5,
+        //     tiled: 'true'
+        // });
 
         var options = {
             transparent: 'true',
@@ -180,6 +180,8 @@
             tiled: 'true'
             //info_format: 'text/html'
         };
+
+       
         var source = L.WMS.source('https://mapas.msj.go.cr/server/services/SIG_SNIT/SIG_SER_SNIT_WMS/MapServer/WMSServer', options);
         var BloquesSJ = source.getLayer('Bloques_SJ');
 
